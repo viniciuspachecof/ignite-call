@@ -1,8 +1,10 @@
 import { Button, Heading, MultiStep, Text, TextInput } from '@ignite-ui/react';
 import { Container, Header } from '../styles';
-import { ArrowRightIcon } from '@phosphor-icons/react';
+import { ArrowRightIcon, CheckIcon } from '@phosphor-icons/react';
 import z from 'zod';
-import { ConnectBox, ConnectItem } from './styles';
+import { AuthError, ConnectBox, ConnectItem } from './styles';
+import { signIn, useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 const registerFormSchema = z.object({
   username: z
@@ -18,7 +20,15 @@ const registerFormSchema = z.object({
 type RegisterFormData = z.infer<typeof registerFormSchema>;
 
 export default function Register() {
-  // async function handleRegister(data: RegisterFormData) {}
+  const session = useSession();
+  const router = useRouter();
+
+  const hasAuthError = !!router.query.error;
+  const isSignedIn = session.status === 'authenticated';
+
+  async function handleConnectCalendar() {
+    await signIn('google');
+  }
 
   return (
     <Container>
@@ -35,11 +45,24 @@ export default function Register() {
       <ConnectBox>
         <ConnectItem>
           <Text>Google Calendar</Text>
-          <Button variant="secondary" size="sm">
-            Conenctar <ArrowRightIcon />
-          </Button>
+          {isSignedIn ? (
+            <Button size="sm" disabled>
+              Conectado <CheckIcon />
+            </Button>
+          ) : (
+            <Button variant="secondary" size="sm" onClick={handleConnectCalendar}>
+              Conenctar <ArrowRightIcon />
+            </Button>
+          )}
         </ConnectItem>
-        <Button type="submit">
+
+        {hasAuthError && (
+          <AuthError>
+            Falha ao se conectar ao Google, verifique se você habilitou as permissões de acesso ao Google Calendar.
+          </AuthError>
+        )}
+
+        <Button type="submit" disabled={!isSignedIn}>
           Próximo passo <ArrowRightIcon />
         </Button>
       </ConnectBox>
