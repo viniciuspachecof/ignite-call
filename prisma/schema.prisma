@@ -26,14 +26,14 @@ model User {
 }
 
 model Account {
-  id                  String    @id @default(cuid())
+  id                  String  @id @default(cuid())
   user_id             String
   type                String
   provider            String
   provider_account_id String
   refresh_token       String?
   access_token        String?
-  expires_at          DateTime?
+  expires_at          Int?
   token_type          String?
   scope               String?
   id_token            String?

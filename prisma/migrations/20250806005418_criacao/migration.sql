@@ -1,12 +1,12 @@
-/*
-  Warnings:
-
-  - A unique constraint covering the columns `[email]` on the table `users` will be added. If there are existing duplicate values, this will fail.
-
-*/
--- AlterTable
-ALTER TABLE "users" ADD COLUMN "avatar_url" TEXT;
-ALTER TABLE "users" ADD COLUMN "email" TEXT;
+-- CreateTable
+CREATE TABLE "users" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "username" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
+    "email" TEXT,
+    "avatar_url" TEXT,
+    "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
 
 -- CreateTable
 CREATE TABLE "accounts" (
@@ -21,7 +21,7 @@ CREATE TABLE "accounts" (
     "token_type" TEXT,
     "scope" TEXT,
     "id_token" TEXT,
-    "sessions_state" TEXT,
+    "session_state" TEXT,
     CONSTRAINT "accounts_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
@@ -35,10 +35,13 @@ CREATE TABLE "sessions" (
 );
 
 -- CreateIndex
+CREATE UNIQUE INDEX "users_username_key" ON "users"("username");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "accounts_provider_provider_account_id_key" ON "accounts"("provider", "provider_account_id");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "sessions_session_token_key" ON "sessions"("session_token");
-
--- CreateIndex
-CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
