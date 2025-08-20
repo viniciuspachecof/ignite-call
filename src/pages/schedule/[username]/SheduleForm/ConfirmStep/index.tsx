@@ -21,6 +21,7 @@ export function ConfirmStep() {
   } = useForm<ConfirmFormData>({
     resolver: zodResolver(confirmFormSchema),
   });
+
   function handleConfirmScheduling(data: ConfirmFormData) {
     console.log(data);
   }
