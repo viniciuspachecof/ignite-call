@@ -8,7 +8,8 @@ export function PrismaAdapter(
   res: NextApiResponse | NextPageContext['res']
 ): Adapter {
   return {
-    async createUser(user) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    async createUser(user: any) {
       const { '@ignite-call:userId': userIdOnCookies } = parseCookies({ req });
 
       if (!userIdOnCookies) {
