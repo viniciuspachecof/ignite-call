@@ -58,7 +58,7 @@ export default function ConnectCalendar() {
               </Button>
             ) : (
               <Button variant="secondary" size="sm" onClick={handleConnectCalendar}>
-                Conenctar <ArrowRightIcon />
+                Conectar <ArrowRightIcon />
               </Button>
             )}
           </ConnectItem>
