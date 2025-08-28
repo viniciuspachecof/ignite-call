@@ -1,5 +1,4 @@
 import { Avatar, Button, Heading, MultiStep, Text, TextArea } from '@ignite-ui/react';
-import { ArrowRightIcon } from '@phosphor-icons/react/dist/ssr';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import z from 'zod';
@@ -12,6 +11,10 @@ import { useSession } from 'next-auth/react';
 import { api } from '@/src/lib/axios';
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
+
+// import { ArrowRightIcon } from '@phosphor-icons/react/dist/ssr';
+import dynamic from 'next/dynamic';
+const ArrowRightIcon = dynamic(async () => import('@phosphor-icons/react').then((mod) => mod.ArrowRightIcon));
 
 const updateProfileSchema = z.object({
   bio: z.string(),
