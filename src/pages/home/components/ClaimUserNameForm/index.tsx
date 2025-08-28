@@ -1,6 +1,6 @@
 import { Button, Text, TextInput } from '@ignite-ui/react';
 import { Form, FormAnnotation } from './styles';
-import { ArrowRightIcon } from '@phosphor-icons/react';
+import { ArrowRight } from 'phosphor-react';
 import { useForm } from 'react-hook-form';
 import z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -42,7 +42,7 @@ export function ClaimUsernameForm() {
         <TextInput type="text" size="sm" prefix="ignite.com/" placeholder="seu-usuario" {...register('username')} />
         <Button size="sm" type="submit">
           Reservar
-          <ArrowRightIcon />
+          <ArrowRight />
         </Button>
       </Form>
       <FormAnnotation>

@@ -1,6 +1,6 @@
 import { Button, Heading, MultiStep, Text, TextInput } from '@ignite-ui/react';
 import { Container, Header } from '../styles';
-import { ArrowRightIcon, CheckIcon } from '@phosphor-icons/react';
+import { ArrowRight, Check } from 'phosphor-react';
 import z from 'zod';
 import { AuthError, ConnectBox, ConnectItem } from './styles';
 import { signIn, useSession } from 'next-auth/react';
@@ -54,11 +54,11 @@ export default function ConnectCalendar() {
             <Text>Google Calendar</Text>
             {isSignedIn ? (
               <Button size="sm" disabled>
-                Conectado <CheckIcon />
+                Conectado <Check />
               </Button>
             ) : (
               <Button variant="secondary" size="sm" onClick={handleConnectCalendar}>
-                Conectar <ArrowRightIcon />
+                Conectar <ArrowRight />
               </Button>
             )}
           </ConnectItem>
@@ -70,7 +70,7 @@ export default function ConnectCalendar() {
           )}
 
           <Button onClick={handleNavigateToNextStep} type="submit" disabled={!isSignedIn}>
-            Próximo passo <ArrowRightIcon />
+            Próximo passo <ArrowRight />
           </Button>
         </ConnectBox>
       </Container>

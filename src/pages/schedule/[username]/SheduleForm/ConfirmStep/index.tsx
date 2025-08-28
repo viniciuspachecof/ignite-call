@@ -1,6 +1,6 @@
 import { Button, Text, TextArea, TextInput } from '@ignite-ui/react';
 import { ConfirmForm, FormActions, FormError, FormHeader } from './styles';
-import { CalendarBlankIcon, ClockIcon } from '@phosphor-icons/react';
+import { CalendarBlank, Clock } from 'phosphor-react';
 import z from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -53,11 +53,11 @@ export function ConfirmStep({ schedulingDate, onCancelConfirmation }: ConfirmSte
     <ConfirmForm as="form" onSubmit={handleSubmit(handleConfirmScheduling)}>
       <FormHeader>
         <Text>
-          <CalendarBlankIcon />
+          <CalendarBlank />
           {describedDate}
         </Text>
         <Text>
-          <ClockIcon />
+          <Clock />
           {describedTime}
         </Text>
       </FormHeader>

@@ -12,9 +12,7 @@ import { api } from '@/src/lib/axios';
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 
-// import { ArrowRightIcon } from '@phosphor-icons/react/dist/ssr';
-import dynamic from 'next/dynamic';
-const ArrowRightIcon = dynamic(async () => import('@phosphor-icons/react').then((mod) => mod.ArrowRightIcon));
+import { ArrowRight } from 'phosphor-react';
 
 const updateProfileSchema = z.object({
   bio: z.string(),
@@ -69,7 +67,7 @@ export default function UpdateProfile() {
           </label>
 
           <Button type="submit">
-            Finalizar <ArrowRightIcon />
+            Finalizar <ArrowRight />
           </Button>
         </ProfileBox>
       </Container>

@@ -1,4 +1,4 @@
-import { CaretLeftIcon, CaretRightIcon } from '@phosphor-icons/react';
+import { CaretLeft, CaretRight } from 'phosphor-react';
 import { CalendarActions, CalendarBody, CalendarContainer, CalendarDay, CalendarHeader, CalendarTitle } from './styles';
 import { getWeekDays } from '@/src/utils/get-week-days';
 import { useMemo, useState } from 'react';
@@ -140,10 +140,10 @@ export function Calendar({ selectedDate, onDateSelected }: CalendarProps) {
 
         <CalendarActions>
           <button title="Previous month" onClick={handlePreviousMonth}>
-            <CaretLeftIcon />
+            <CaretLeft />
           </button>
           <button title="Next month" onClick={handleNextMonth}>
-            <CaretRightIcon />
+            <CaretRight />
           </button>
         </CalendarActions>
       </CalendarHeader>

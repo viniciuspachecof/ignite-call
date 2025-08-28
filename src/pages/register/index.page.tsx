@@ -1,6 +1,6 @@
 import { Button, Heading, MultiStep, Text, TextInput } from '@ignite-ui/react';
 import { Container, Form, FormError, Header } from './styles';
-import { ArrowRightIcon } from '@phosphor-icons/react';
+import { ArrowRight } from 'phosphor-react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import z from 'zod';
@@ -90,7 +90,7 @@ export default function Register() {
           </label>
 
           <Button type="submit">
-            Próximo passo <ArrowRightIcon />
+            Próximo passo <ArrowRight />
           </Button>
         </Form>
       </Container>

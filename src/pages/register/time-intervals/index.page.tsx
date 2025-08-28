@@ -1,7 +1,7 @@
 import { Button, Heading, MultiStep, Text, TextInput, Checkbox } from '@ignite-ui/react';
 import { Container, Header } from '../styles';
 import { FormError, IntervalBox, IntervalDay, IntervalInputs, IntervalItem, IntervalsContainer } from './styles';
-import { ArrowRightIcon } from '@phosphor-icons/react';
+import { ArrowRight } from 'phosphor-react';
 import { useFieldArray, useForm, Controller } from 'react-hook-form';
 import z from 'zod';
 import { getWeekDays } from '@/src/utils/get-week-days';
@@ -149,7 +149,7 @@ export default function TimeIntervals() {
           {errors.intervals && <FormError size="sm">{errors.intervals.root?.message}</FormError>}
 
           <Button type="submit" disabled={isSubmitting}>
-            Próximo passo <ArrowRightIcon />
+            Próximo passo <ArrowRight />
           </Button>
         </IntervalBox>
       </Container>
